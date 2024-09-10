@@ -20,7 +20,7 @@ Resources:
         ErrorDocument: error.html
     DeletionPolicy: Delete
     UpdateReplacePolicy: Delete
-  McCormickHubCertificate:
+  PlayItAgainSACertificate:
     Type: 'AWS::CertificateManager::Certificate'
     Properties:
       DomainName: 'playitagainsa.org'
@@ -55,11 +55,11 @@ Resources:
           - playitagainsa.org
           - www.playitagainsa.org
         ViewerCertificate:
-          AcmCertificateArn: !Ref McCormickHubCertificate
+          AcmCertificateArn: !Ref PlayItAgainSACertificate
           SslSupportMethod: sni-only
     DeletionPolicy: Delete
     UpdateReplacePolicy: Delete
-  TedMcCormickHubRecord:
+  PlayItAgainSARecord:
     Type: AWS::Route53::RecordSet
     Properties:
       HostedZoneId: '#{AWS_HOSTED_ZONE_ID}#'
@@ -69,7 +69,7 @@ Resources:
         DNSName: !GetAtt StaticSiteCloudfront.DomainName
         EvaluateTargetHealth: False
         HostedZoneId: Z2FDTNDATAQYW2
-  WwwTedMcCormickHubRecord:
+  WwwPlayItAgainSARecord:
     Type: AWS::Route53::RecordSet
     Properties:
       HostedZoneId: '#{AWS_HOSTED_ZONE_ID}#'
