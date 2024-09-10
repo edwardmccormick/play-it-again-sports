@@ -56,8 +56,8 @@ jobs:
         run: find **/*.yaml -type f -exec sed -i ''s/#{AWS_LAMBDA_EXECUTION_ROLE}#/${{ secrets.AWS_LAMBDA_EXECUTION_ROLE }}/g'' {} \;
 
 
-      - name: Zip emailsender Lambda
-        run: zip src/emailsender/emailsender src/emailsender/index.js
+      # - name: Zip emailsender Lambda
+      #   run: zip src/emailsender/emailsender src/emailsender/index.js
 
       - name: Configure AWS Credentials For GitHub Actions
         uses: aws-actions/configure-aws-credentials@v2
