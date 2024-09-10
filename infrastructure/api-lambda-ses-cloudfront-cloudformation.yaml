@@ -11,7 +11,7 @@ Resources:
       Type: AWS::ApiGateway::RestApi
       Properties:
         Description: 'This API supports the contact me functionality/page of the static site hosted at www.playitagainsa.com'
-        Name: 'mccormickhubapi'
+        Name: 'playitagainapi'
         EndpointConfiguration:
           Types:
             - REGIONAL

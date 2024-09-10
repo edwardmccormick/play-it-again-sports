@@ -23,13 +23,13 @@ Resources:
   McCormickHubCertificate:
     Type: 'AWS::CertificateManager::Certificate'
     Properties:
-      DomainName: 'playitagainsa.com'
+      DomainName: 'playitagainsa.org'
       SubjectAlternativeNames:
-      - 'www.playitagainsa.com'
+      - 'www.playitagainsa.org'
       DomainValidationOptions:
-      - DomainName: 'playitagainsa.com'
+      - DomainName: 'playitagainsa.org'
         HostedZoneId: '#{AWS_HOSTED_ZONE_ID}#'
-      - DomainName: 'www.playitagainsa.com'
+      - DomainName: 'www.playitagainsa.org'
         HostedZoneId: '#{AWS_HOSTED_ZONE_ID}#'
       ValidationMethod: DNS
   StaticSiteCloudfront:
@@ -39,7 +39,6 @@ Resources:
         Origins:
           - DomainName: '#{S3_BUCKET_NAME}#.s3-website-us-east-1.amazonaws.com'
             Id: myS3Origin
-            OriginPath: '/ted'
             CustomOriginConfig:
               HTTPPort: '80'
               HTTPSPort: '443'
@@ -53,8 +52,8 @@ Resources:
         Enabled: 'true'
         DefaultRootObject: index.html
         Aliases:
-          - playitagainsa.com
-          - www.playitagainsa.com
+          - playitagainsa.org
+          - www.playitagainsa.org
         ViewerCertificate:
           AcmCertificateArn: !Ref McCormickHubCertificate
           SslSupportMethod: sni-only
@@ -64,7 +63,7 @@ Resources:
     Type: AWS::Route53::RecordSet
     Properties:
       HostedZoneId: '#{AWS_HOSTED_ZONE_ID}#'
-      Name: playitagainsa.com
+      Name: playitagainsa.org
       Type: A
       AliasTarget:
         DNSName: !GetAtt StaticSiteCloudfront.DomainName
@@ -74,7 +73,7 @@ Resources:
     Type: AWS::Route53::RecordSet
     Properties:
       HostedZoneId: '#{AWS_HOSTED_ZONE_ID}#'
-      Name: www.playitagainsa.com
+      Name: www.playitagainsa.org
       Type: A
       AliasTarget:
         DNSName: !GetAtt StaticSiteCloudfront.DomainName
