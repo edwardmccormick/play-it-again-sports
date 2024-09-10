@@ -9,7 +9,11 @@ Resources:
   S3BucketForStaticSite:
     Type: 'AWS::S3::Bucket'
     Properties:
-      AccessControl: PublicRead
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: ObjectWriter
       BucketName: '#{S3_BUCKET_NAME}#'
       WebsiteConfiguration:
         IndexDocument: index.html
