@@ -23,13 +23,13 @@ Resources:
   PlayItForwardSACertificate:
     Type: 'AWS::CertificateManager::Certificate'
     Properties:
-      DomainName: 'PlayItForwardSA.org'
+      DomainName: 'playitforwardsa.org'
       SubjectAlternativeNames:
-      - 'www.PlayItForwardSA.org'
+      - 'www.playitforwardsa.org'
       DomainValidationOptions:
-      - DomainName: 'PlayItForwardSA.org'
+      - DomainName: 'playitforwardsa.org'
         HostedZoneId: '#{AWS_HOSTED_ZONE_ID}#'
-      - DomainName: 'www.PlayItForwardSA.org'
+      - DomainName: 'www.playitforwardsa.org'
         HostedZoneId: '#{AWS_HOSTED_ZONE_ID}#'
       ValidationMethod: DNS
   StaticSiteCloudfront:
@@ -52,8 +52,8 @@ Resources:
         Enabled: 'true'
         DefaultRootObject: index.html
         Aliases:
-          - PlayItForwardSA.org
-          - www.PlayItForwardSA.org
+          - playitforwardsa.org
+          - www.playitforwardsa.org
         ViewerCertificate:
           AcmCertificateArn: !Ref PlayItForwardSACertificate
           SslSupportMethod: sni-only
@@ -63,7 +63,7 @@ Resources:
     Type: AWS::Route53::RecordSet
     Properties:
       HostedZoneId: '#{AWS_HOSTED_ZONE_ID}#'
-      Name: PlayItForwardSA.org
+      Name: playitforwardsa.org
       Type: A
       AliasTarget:
         DNSName: !GetAtt StaticSiteCloudfront.DomainName
@@ -73,7 +73,7 @@ Resources:
     Type: AWS::Route53::RecordSet
     Properties:
       HostedZoneId: '#{AWS_HOSTED_ZONE_ID}#'
-      Name: www.PlayItForwardSA.org
+      Name: www.playitforwardsa.org
       Type: A
       AliasTarget:
         DNSName: !GetAtt StaticSiteCloudfront.DomainName
