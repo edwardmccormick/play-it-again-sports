@@ -20,7 +20,7 @@ Resources:
         ErrorDocument: error.html
     DeletionPolicy: Delete
     UpdateReplacePolicy: Delete
-  PlayItAgainForwardSACertificate:
+  PlayItForwardSACertificate:
     Type: 'AWS::CertificateManager::Certificate'
     Properties:
       DomainName: 'PlayItForwardSA.org'
